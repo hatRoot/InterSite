@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Scramble Effect</title>
+    <style>
+        body {
+            background-color: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+            /* Monospace font */
+        }
+
+        #scramble-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00ccff;
+            /* Electric Blue (More Blue, less Green) */
+            text-shadow: 0 0 10px rgba(0, 204, 255, 0.5),
+                0 0 20px rgba(0, 204, 255, 0.3),
+                0 0 40px rgba(0, 204, 255, 0.1);
+            filter: blur(10px);
+            /* Initial blur */
+            transition: filter 0.1s ease;
+            /* Smooth blur transition */
+            margin: 0;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="scramble-text"></h1>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('scramble-text');
+            const targetText = "AUTONOMOUS AGENTS";
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+            const duration = 2000; // Duration in ms
+            const frameRate = 30; // Frames per second
+
+            let startTime = null;
+            let frame = 0;
+            const totalFrames = (duration / 1000) * frameRate;
+
+            function update(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = (timestamp - startTime) / duration;
+
+                if (progress >= 1) {
+                    el.innerText = targetText;
+                    el.style.filter = 'blur(0px)'; // Final clear state
+                    return;
+                }
+
+                // Calculate current blur amount (decreasing from 10px to 0px)
+                const currentBlur = 10 * (1 - progress);
+                el.style.filter = `blur(${currentBlur.toFixed(2)}px)`;
+
+                // Generate scramble text
+                let output = "";
+                for (let i = 0; i < targetText.length; i++) {
+                    // If the progress for this specific character index is complete, show the real char
+                    // We stagger the completion slightly for a "wave" reveal effect
+                    const charProgress = (i / targetText.length);
+                    const scaffold = progress * 1.5; // Speed multiplier to finish before end
+
+                    if (scaffold > charProgress + 0.1 || progress > 0.9) {
+                        output += targetText[i];
+                    } else {
+                        // Otherwise show a random character
+                        output += characters[Math.floor(Math.random() * characters.length)];
+                    }
+                }
+
+                el.innerText = output;
+                requestAnimationFrame(update);
+            }
+
+            requestAnimationFrame(update);
+        });
+    </script>
+</body>
+
+</html>

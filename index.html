@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Web Studios | Desarrollo Web Futurista</title>
+    <meta name="description"
+        content="Agencia de desarrollo web minimalista y futurista. Creamos sitios web que impresionan y convierten. Expertos en diseño UI/UX y tecnologías modernas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">Aura Web Studios</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto" class="btn-primary">Cotizar</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="fade-in-up">Creamos Sitios Web que <span class="text-gradient">Impresionan</span> y <span
+                    class="text-gradient">Convierten</span></h1>
+            <p class="fade-in-up delay-1">Minimalistas, Futuristas y Efectivos. Diseño de clase mundial para tu negocio.
+            </p>
+            <div class="cta-container fade-in-up delay-2">
+                <a href="#contacto" class="btn-hero pulse">Solicita una Cotización Gratuita</a>
+            </div>
+            <div class="hero-social-proof fade-in-up delay-3">
+                <p>Nuestros clientes dicen: "Wow, ellos sí saben hacer sitios web"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portafolio" class="portfolio">
+        <div class="section-header">
+            <h2>Ejemplos de Nuestro Trabajo</h2>
+            <p>Sitios reales que generan resultados tangibles.</p>
+        </div>
+        <div class="portfolio-grid">
+            <!-- Project 1: Gestor de Autos -->
+            <div class="project-card reveal">
+                <div class="project-image">
+                    <img src="assets/gestor-preview.png" alt="Gestor de Autos Website" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-details">
+                            <h3>Gestor de Autos</h3>
+                            <p>Plataforma integral de trámites vehiculares.</p>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JS</span>
+                            <a href="https://gestordeautos.com.mx/" target="_blank" class="btn-secondary">Ver Proyecto
+                                en Vivo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2: MacWave -->
+            <div class="project-card reveal delay-1">
+                <div class="project-image">
+                    <img src="assets/macwave-preview.png" alt="MacWave Website" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-details">
+                            <h3>MacWave</h3>
+                            <p>E-commerce especializado en productos Apple.</p>
+                            <span class="tech-tag">E-commerce</span>
+                            <span class="tech-tag">SEO</span>
+                            <a href="https://macwave.com.mx/" target="_blank" class="btn-secondary">Ver Proyecto en
+                                Vivo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="section-header">
+            <h2>Servicios del Futuro</h2>
+            <p>Todo lo que tu empresa necesita para dominar el mundo digital.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="icon-3d">✨</div>
+                <h3>Diseño Minimalista</h3>
+                <p>Estética limpia y futurista que comunica profesionalismo instantáneo.</p>
+            </div>
+            <div class="service-card reveal delay-1">
+                <div class="icon-3d">🚀</div>
+                <h3>Desarrollo Web</h3>
+                <p>Sitios veloces, seguros y optimizados para todos los dispositivos.</p>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="icon-3d">💎</div>
+                <h3>E-commerce</h3>
+                <p>Tiendas en línea diseñadas para maximizar tus ventas.</p>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="icon-3d">🔍</div>
+                <h3>SEO Avanzado</h3>
+                <p>Posicionamiento estratégico para que tus clientes te encuentren primero.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="contact-container glass-panel reveal">
+            <div class="contact-info">
+                <h2>Empecemos tu Proyecto</h2>
+                <p>¿Listo para el cambio? Te respondemos en menos de 24 horas.</p>
+                <div class="ai-chat-simulation">
+                    <div class="chat-bubble user">Hola, necesito un sitio web.</div>
+                    <div class="chat-bubble ai">¡Excelente! Estás en el lugar correcto. ¿Qué sector es tu empresa?</div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="sector">Sector</label>
+                    <select id="sector">
+                        <option value="privado">Sector Privado</option>
+                        <option value="comercio">Comercio / Retail</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="salud">Salud</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                </div>
+                <button type="submit" class="btn-glow">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="logo footer-logo">Aura Web Studios</div>
+                <p class="footer-tagline">Diseñando el futuro digital, hoy.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <ul class="footer-contact">
+                    <li>hello@aurawebstudios.com</li>
+                    <li>55 3575 7364</li>
+                    <li>Ciudad de México, México</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">LI</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Aura Web Studios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
