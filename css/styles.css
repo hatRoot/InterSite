@@ -192,22 +192,38 @@ h1, h2, h3, h4 {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    margin: 0 auto;
     width: 100%;
     height: var(--nav-height);
-    background: rgba(5, 6, 10, 0.72);
-    backdrop-filter: var(--glass-blur-heavy);
-    -webkit-backdrop-filter: var(--glass-blur-heavy);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(8, 11, 20, 0.45);
+    backdrop-filter: blur(28px) saturate(210%) contrast(105%);
+    -webkit-backdrop-filter: blur(28px) saturate(210%) contrast(105%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.35);
     z-index: var(--z-nav);
     display: flex;
     align-items: center;
-    transition: all var(--transition-normal);
+    transition: width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                top 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, width, top;
 }
 
 .glass-nav.nav-scrolled {
-    background: rgba(5, 6, 10, 0.94);
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    top: 12px;
+    width: min(92%, 1160px);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(10, 14, 26, 0.58);
+    backdrop-filter: blur(35px) saturate(220%) contrast(110%);
+    -webkit-backdrop-filter: blur(35px) saturate(220%) contrast(110%);
+    box-shadow: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+                0 25px 60px rgba(0, 0, 0, 0.7),
+                0 0 35px rgba(0, 240, 255, 0.18);
 }
 
 .nav-container {

@@ -72,16 +72,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Estilo activo para el header al hacer scroll
-    window.addEventListener('scroll', () => {
+    // ==========================================
+    // 2. NAVEGACIÓN DE VIDRIO CON FÍSICA FLUIDA E INERCIA PESADA
+    // ==========================================
+    let lastScrollY = window.scrollY;
+    let currentInertiaY = 0;
+    let targetInertiaY = 0;
+
+    function handleNavScrollPhysics() {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+        lastScrollY = currentScrollY;
+
+        // Inercia fluida: al hacer scroll, la barra reacciona con resistencia física líquida
+        if (Math.abs(delta) > 0.4) {
+            // Desplazamiento sutil elástico amortiguado (resistencia viscosa)
+            targetInertiaY = Math.max(Math.min(delta * 0.15, 6), -6);
+        } else {
+            targetInertiaY = 0;
+        }
+
+        // Amortiguación pesada (factor lerp 0.08 para sensación de masa líquida densa)
+        currentInertiaY += (targetInertiaY - currentInertiaY) * 0.08;
+
         if (glassNav) {
-            if (window.scrollY > 40) {
+            if (currentScrollY > 35) {
                 glassNav.classList.add('nav-scrolled');
             } else {
                 glassNav.classList.remove('nav-scrolled');
             }
+
+            // Aplicar inercia suave en el eje Y
+            glassNav.style.transform = `translate3d(0, ${(-currentInertiaY).toFixed(2)}px, 0)`;
         }
-    }, { passive: true });
+
+        requestAnimationFrame(handleNavScrollPhysics);
+    }
+
+    if (glassNav) {
+        requestAnimationFrame(handleNavScrollPhysics);
+    }
 
     // ==========================================
     // 3. SMOOTH SCROLL CON OFFSET DE HEADER
