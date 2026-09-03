@@ -220,4 +220,59 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.transform = 'translate(0px, 0px)';
         });
     });
+
+    // ==========================================
+    // 8. CONSOLA DE RENDIMIENTO EN VIVO (HERO SHOWCASE)
+    // ==========================================
+    const consoleTabs = document.querySelectorAll('.console-tab-btn');
+    const scoreNum = document.getElementById('console-score');
+    const scoreCircle = document.getElementById('console-circle');
+    const scoreTitle = document.getElementById('console-title');
+    const scoreDesc = document.getElementById('console-desc');
+    const lcpVal = document.getElementById('console-lcp');
+    const clsVal = document.getElementById('console-cls');
+    const sizeVal = document.getElementById('console-size');
+    const convVal = document.getElementById('console-conv');
+
+    if (consoleTabs.length && scoreNum) {
+        consoleTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const mode = tab.getAttribute('data-console-mode');
+                consoleTabs.forEach(t => t.classList.remove('active-tab'));
+                tab.classList.add('active-tab');
+
+                if (mode === 'native') {
+                    scoreNum.textContent = '100';
+                    scoreNum.style.color = 'var(--color-accent-emerald, #00df8f)';
+                    scoreCircle.style.borderColor = 'var(--color-accent-emerald, #00df8f)';
+                    scoreCircle.style.boxShadow = '0 0 25px rgba(0, 223, 143, 0.4)';
+                    scoreTitle.textContent = 'Rendimiento Máximo Garantizado';
+                    scoreDesc.textContent = 'Código nativo sin plugins lentos. Carga en 0.6s y cero rebote de clientes en móviles.';
+                    lcpVal.textContent = '0.6s';
+                    lcpVal.style.color = 'var(--color-accent-cyan)';
+                    clsVal.textContent = '0.00';
+                    clsVal.style.color = 'var(--color-accent-cyan)';
+                    sizeVal.textContent = '42 KB';
+                    sizeVal.style.color = 'var(--color-accent-cyan)';
+                    convVal.textContent = '+340%';
+                    convVal.style.color = 'var(--color-accent-emerald)';
+                } else {
+                    scoreNum.textContent = '34';
+                    scoreNum.style.color = '#ff4757';
+                    scoreCircle.style.borderColor = '#ff4757';
+                    scoreCircle.style.boxShadow = '0 0 25px rgba(255, 71, 87, 0.4)';
+                    scoreTitle.textContent = 'Pérdida Crítica de Clientes';
+                    scoreDesc.textContent = 'Sobrecargado de plugins pesados y constructores lentos. Pierde el 53% del tráfico antes de cargar.';
+                    lcpVal.textContent = '4.8s (Lento)';
+                    lcpVal.style.color = '#ff4757';
+                    clsVal.textContent = '0.32 (Inestable)';
+                    clsVal.style.color = '#ff4757';
+                    sizeVal.textContent = '4.8 MB (Pesado)';
+                    sizeVal.style.color = '#ff4757';
+                    convVal.textContent = '-60% Clientes';
+                    convVal.style.color = '#ff4757';
+                }
+            });
+        });
+    }
 });
