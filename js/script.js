@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 8. CONSOLA DE RENDIMIENTO EN VIVO (HERO SHOWCASE)
+    // 8. CONSOLA DE RENDIMIENTO EN VIVO (ANIMACIÓN DESDE CERO)
     // ==========================================
     const consoleTabs = document.querySelectorAll('.console-tab-btn');
     const scoreNum = document.getElementById('console-score');
@@ -234,44 +234,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const sizeVal = document.getElementById('console-size');
     const convVal = document.getElementById('console-conv');
 
+    let currentMetrics = {
+        score: 0,
+        lcp: 0.0,
+        cls: 0.15,
+        size: 0,
+        conv: 0
+    };
+
+    function animateNumber(element, start, end, duration, options = {}) {
+        if (!element) return;
+        const startTime = performance.now();
+
+        function easeOutCubic(x) {
+            return 1 - Math.pow(1 - x, 3);
+        }
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutCubic(progress);
+            const current = start + (end - start) * eased;
+
+            let formatted = current.toFixed(options.decimals !== undefined ? options.decimals : 0);
+            if (options.sign && current > 0) {
+                formatted = '+' + formatted;
+            }
+
+            element.textContent = `${options.prefix || ''}${formatted}${options.suffix || ''}`;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                const finalSign = options.sign && end > 0 ? '+' : '';
+                element.textContent = `${options.prefix || ''}${finalSign}${end.toFixed(options.decimals !== undefined ? options.decimals : 0)}${options.suffix || ''}`;
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    function updateConsoleMetrics(targetMode, duration = 1400) {
+        if (!scoreNum) return;
+
+        if (targetMode === 'native') {
+            scoreCircle.style.borderColor = 'var(--color-accent-emerald, #00df8f)';
+            scoreCircle.style.boxShadow = '0 0 30px rgba(0, 223, 143, 0.45)';
+            scoreNum.style.color = 'var(--color-accent-emerald, #00df8f)';
+            scoreTitle.textContent = 'Rendimiento Máximo Garantizado';
+            scoreDesc.textContent = 'Código nativo sin plugins lentos. Carga en 0.6s y cero rebote de clientes en móviles.';
+
+            lcpVal.style.color = 'var(--color-accent-cyan)';
+            clsVal.style.color = 'var(--color-accent-cyan)';
+            sizeVal.style.color = 'var(--color-accent-cyan)';
+            convVal.style.color = 'var(--color-accent-emerald)';
+
+            // Animación suave desde el valor actual hasta el objetivo
+            animateNumber(scoreNum, currentMetrics.score, 100, duration, { decimals: 0 });
+            animateNumber(lcpVal, currentMetrics.lcp, 0.6, duration, { decimals: 1, suffix: 's' });
+            animateNumber(clsVal, currentMetrics.cls, 0.00, duration, { decimals: 2 });
+            animateNumber(sizeVal, currentMetrics.size, 42, duration, { decimals: 0, suffix: ' KB' });
+            animateNumber(convVal, currentMetrics.conv, 340, duration, { decimals: 0, sign: true, suffix: '%' });
+
+            currentMetrics = { score: 100, lcp: 0.6, cls: 0.00, size: 42, conv: 340 };
+        } else {
+            scoreCircle.style.borderColor = '#ff4757';
+            scoreCircle.style.boxShadow = '0 0 30px rgba(255, 71, 87, 0.45)';
+            scoreNum.style.color = '#ff4757';
+            scoreTitle.textContent = 'Pérdida Crítica de Clientes';
+            scoreDesc.textContent = 'Sobrecargado de plugins pesados y constructores lentos. Pierde el 53% del tráfico antes de cargar.';
+
+            lcpVal.style.color = '#ff4757';
+            clsVal.style.color = '#ff4757';
+            sizeVal.style.color = '#ff4757';
+            convVal.style.color = '#ff4757';
+
+            animateNumber(scoreNum, currentMetrics.score, 34, duration, { decimals: 0 });
+            animateNumber(lcpVal, currentMetrics.lcp, 4.8, duration, { decimals: 1, suffix: 's' });
+            animateNumber(clsVal, currentMetrics.cls, 0.32, duration, { decimals: 2 });
+            animateNumber(sizeVal, currentMetrics.size, 4800, duration, { decimals: 0, suffix: ' KB' });
+            animateNumber(convVal, currentMetrics.conv, -60, duration, { decimals: 0, suffix: '%' });
+
+            currentMetrics = { score: 34, lcp: 4.8, cls: 0.32, size: 4800, conv: -60 };
+        }
+    }
+
     if (consoleTabs.length && scoreNum) {
+        // Disparar animación de entrada desde cero al cargar
+        setTimeout(() => {
+            updateConsoleMetrics('native', 1600);
+        }, 350);
+
+        // Control de pestañas
         consoleTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const mode = tab.getAttribute('data-console-mode');
                 consoleTabs.forEach(t => t.classList.remove('active-tab'));
                 tab.classList.add('active-tab');
-
-                if (mode === 'native') {
-                    scoreNum.textContent = '100';
-                    scoreNum.style.color = 'var(--color-accent-emerald, #00df8f)';
-                    scoreCircle.style.borderColor = 'var(--color-accent-emerald, #00df8f)';
-                    scoreCircle.style.boxShadow = '0 0 25px rgba(0, 223, 143, 0.4)';
-                    scoreTitle.textContent = 'Rendimiento Máximo Garantizado';
-                    scoreDesc.textContent = 'Código nativo sin plugins lentos. Carga en 0.6s y cero rebote de clientes en móviles.';
-                    lcpVal.textContent = '0.6s';
-                    lcpVal.style.color = 'var(--color-accent-cyan)';
-                    clsVal.textContent = '0.00';
-                    clsVal.style.color = 'var(--color-accent-cyan)';
-                    sizeVal.textContent = '42 KB';
-                    sizeVal.style.color = 'var(--color-accent-cyan)';
-                    convVal.textContent = '+340%';
-                    convVal.style.color = 'var(--color-accent-emerald)';
-                } else {
-                    scoreNum.textContent = '34';
-                    scoreNum.style.color = '#ff4757';
-                    scoreCircle.style.borderColor = '#ff4757';
-                    scoreCircle.style.boxShadow = '0 0 25px rgba(255, 71, 87, 0.4)';
-                    scoreTitle.textContent = 'Pérdida Crítica de Clientes';
-                    scoreDesc.textContent = 'Sobrecargado de plugins pesados y constructores lentos. Pierde el 53% del tráfico antes de cargar.';
-                    lcpVal.textContent = '4.8s (Lento)';
-                    lcpVal.style.color = '#ff4757';
-                    clsVal.textContent = '0.32 (Inestable)';
-                    clsVal.style.color = '#ff4757';
-                    sizeVal.textContent = '4.8 MB (Pesado)';
-                    sizeVal.style.color = '#ff4757';
-                    convVal.textContent = '-60% Clientes';
-                    convVal.style.color = '#ff4757';
-                }
+                updateConsoleMetrics(mode, 1200);
             });
         });
     }
