@@ -1,0 +1,11 @@
+# robots.txt for Intersite
+# Optimizado para Google Search Console y rastreadores web principales
+
+User-agent: *
+Allow: /
+
+# Evitar indexación de scripts y artefactos internos si los hubiera
+Disallow: /scripts/
+
+# Sitemap canónico
+Sitemap: https://intersite.com.mx/sitemap.xml

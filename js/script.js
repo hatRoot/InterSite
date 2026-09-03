@@ -1,85 +1,223 @@
+/**
+ * Intersite Core Script
+ * Telemetría de Core Web Vitals, Microinteracciones, Accesibilidad y Formularios.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
+    'use strict';
+
+    // ==========================================
+    // 1. MONITOR DE CORE WEB VITALS (GSC READY)
+    // ==========================================
+    try {
+        if ('PerformanceObserver' in window) {
+            // LCP (Largest Contentful Paint)
+            const lcpObserver = new PerformanceObserver((entryList) => {
+                const entries = entryList.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                console.info(`[GSC Telemetry] LCP: ${lastEntry.startTime.toFixed(1)}ms`);
+            });
+            lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+
+            // CLS (Cumulative Layout Shift)
+            let clsValue = 0;
+            const clsObserver = new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    if (!entry.hadRecentInput) {
+                        clsValue += entry.value;
+                    }
+                }
+                console.info(`[GSC Telemetry] CLS: ${clsValue.toFixed(4)}`);
+            });
+            clsObserver.observe({ type: 'layout-shift', buffered: true });
+        }
+    } catch (err) {
+        // Silencioso en navegadores sin soporte
+    }
+
+    // ==========================================
+    // 2. NAVEGACIÓN MÓVIL Y ACCESIBILIDAD
+    // ==========================================
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const glassNav = document.querySelector('.glass-nav');
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if(navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(255, 255, 255, 0.95)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.backdropFilter = 'blur(20px)';
+    if (menuToggle && navLinks) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+
+        const toggleMenu = () => {
+            const isOpen = navLinks.classList.toggle('nav-open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            menuToggle.innerHTML = isOpen ? '✕' : '☰';
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Cerrar al hacer clic en un enlace
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('nav-open')) {
+                toggleMenu();
             }
         });
     }
 
-    // Smooth Scrolling for Anchor Links
+    // Estilo activo para el header al hacer scroll
+    window.addEventListener('scroll', () => {
+        if (glassNav) {
+            if (window.scrollY > 40) {
+                glassNav.classList.add('nav-scrolled');
+            } else {
+                glassNav.classList.remove('nav-scrolled');
+            }
+        }
+    }, { passive: true });
+
+    // ==========================================
+    // 3. SMOOTH SCROLL CON OFFSET DE HEADER
+    // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (href === '#' || !href.startsWith('#')) return;
+
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
+                e.preventDefault();
+                const navHeight = glassNav ? glassNav.offsetHeight : 80;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
-                // Close mobile menu if open
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                }
             }
         });
     });
 
-    // Intersection Observer for Scroll Animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    // ==========================================
+    // 4. INTERSECTION OBSERVER (REVEAL ANIMATIONS)
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Only animate once
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => {
-        observer.observe(el);
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
     });
 
-    // Form Submission Simulation
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // ==========================================
+    // 5. ACCORDION INTERACTIVO PARA FAQ
+    // ==========================================
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+        if (questionBtn) {
+            questionBtn.addEventListener('click', () => {
+                const isActive = item.classList.contains('faq-active');
+
+                // Cerrar otros para mantener limpieza visual
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('faq-active');
+                        const otherBtn = otherItem.querySelector('.faq-question');
+                        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                item.classList.toggle('faq-active', !isActive);
+                questionBtn.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+            });
+        }
+    });
+
+    // ==========================================
+    // 6. FORMULARIO DE CONTACTO SEGURO
+    // ==========================================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Enviando...';
-            btn.style.opacity = '0.7';
-            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const sectorInput = document.getElementById('sector');
+
+            // Validación de correo básico
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+                alert('Por favor, ingresa un correo electrónico válido.');
+                emailInput.focus();
+                return;
+            }
+
+            // Estado de envío
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <span class="spinner"></span> Enviando Solicitud...
+            `;
+
             setTimeout(() => {
-                btn.innerText = '¡Enviado!';
-                btn.style.background = '#4cd964'; // Success green
+                submitBtn.innerHTML = `✓ ¡Solicitud Recibida!`;
+                submitBtn.style.background = 'var(--color-accent-emerald, #00df8f)';
+                submitBtn.style.color = '#000';
+
+                // Mensaje en pantalla
+                const feedbackEl = document.getElementById('form-feedback') || document.createElement('div');
+                feedbackEl.id = 'form-feedback';
+                feedbackEl.className = 'form-success-banner';
+                feedbackEl.innerHTML = `
+                    <p>🎉 <strong>¡Gracias ${nameInput ? nameInput.value : ''}!</strong> Hemos recibido tu proyecto. Te contactaremos en menos de 24 horas.</p>
+                `;
+                contactForm.parentNode.insertBefore(feedbackEl, contactForm.nextSibling);
+
                 contactForm.reset();
-                
-                // Show success alert
-                alert('Gracias por tu mensaje. Te responderemos en breve.');
-                
+
                 setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = ''; // Revert to original CSS gradient
-                    btn.style.opacity = '1';
-                }, 3000);
-            }, 1500);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.style.background = '';
+                    submitBtn.style.color = '';
+                }, 4000);
+            }, 1200);
         });
     }
+
+    // ==========================================
+    // 7. MICROINTERACCIÓN MAGNÉTICA SUTIL (BOTONES WOW)
+    // ==========================================
+    const magneticBtns = document.querySelectorAll('.btn-magnetic');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
 });

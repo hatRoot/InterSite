@@ -4,201 +4,739 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intersite | Sites Webs Developer Studios</title>
+    <title>Intersite | Creación de Sitios Web Básicos y a la Medida de Alto Impacto</title>
+
     <meta name="description"
-        content="Agencia de desarrollo web minimalista y futurista. Creamos sitios web que impresionan y convierten. Expertos en diseño UI/UX y tecnologías modernas.">
+        content="Estudio de desarrollo web de élite. Creamos sitios web básicos y plataformas a la medida que impactan en 3 segundos y convierten. 100% Core Web Vitals Ready.">
+    <meta name="keywords"
+        content="desarrollo web, sitios web basicos, sitios web a la medida, diseño web futurista, optimizacion google search console, core web vitals, paginas web cdmx">
+    <meta name="author" content="Intersite Developer Studios">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://intersite.com.mx/">
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://intersite.com.mx/">
+    <meta property="og:title" content="Intersite | Sitios Web que Impresionan y Convierten">
+    <meta property="og:description"
+        content="Desarrollo de sitios web básicos y a la medida. Impacto visual en 3 segundos y rendimiento récord en Google.">
+    <meta property="og:image" content="https://intersite.com.mx/assets/hero-bg.png">
+    <meta property="og:site_name" content="Intersite Studios">
+    <meta property="og:locale" content="es_MX">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Intersite | Sitios Web Básicos y a la Medida">
+    <meta name="twitter:description"
+        content="Estudio de ingeniería web de élite. Sitios rápidos, estéticos y listos para Google Search Console.">
+    <meta name="twitter:image" content="https://intersite.com.mx/assets/hero-bg.png">
+
+    <!-- Theme & Performance Preconnects -->
+    <meta name="theme-color" content="#08090d">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org JSON-LD para Googlebot -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://intersite.com.mx/#organization",
+          "name": "Intersite - Developer Studios",
+          "url": "https://intersite.com.mx/",
+          "logo": "https://intersite.com.mx/assets/hero-bg.png",
+          "image": "https://intersite.com.mx/assets/hero-bg.png",
+          "description": "Estudio especializado en la creación de sitios web básicos y sistemas a la medida de alto rendimiento y conversión.",
+          "telephone": "+525535757364",
+          "email": "hello@aurawebstudios.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ciudad de México",
+            "addressCountry": "MX"
+          },
+          "priceRange": "$$$"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://intersite.com.mx/#website",
+          "url": "https://intersite.com.mx/",
+          "name": "Intersite",
+          "publisher": {
+            "@id": "https://intersite.com.mx/#organization"
+          }
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://intersite.com.mx/#services",
+          "name": "Servicios de Desarrollo Web",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sitios Web Básicos y Landing Pages Express",
+                "description": "Páginas web optimizadas de alta conversión para negocios que necesitan validación rápida."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sitios Web a la Medida y Ecosistemas Digitales",
+                "description": "Desarrollo de software y plataformas web personalizadas sin limitaciones arquitectónicas."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://intersite.com.mx/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Cuál es la diferencia entre un sitio básico y uno a la medida?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un sitio básico es una estructura ágil de 1 página optimizada para convertir y validar rápidamente un servicio. Un sitio a la medida incluye arquitectura exclusiva, múltiples páginas, integraciones complejas (APIs, bases de datos o paneles autoadministrables) y diseño 100% personalizado."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo garantizan el puntaje de Core Web Vitals en Google?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Escribimos código nativo y modular sin constructores pesados (cero Elementor, cero plantillas sobrecargadas). Usamos precarga de recursos críticos, compresión WebP/AVIF y CSS modular para asegurar LCP < 1.2s y CLS = 0."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Puedo comenzar con un sitio básico y escalarlo más adelante?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí. Toda nuestra arquitectura está construida bajo el principio de transmutación: tu código base puede escalar a e-commerce, portal de usuarios o aplicaciones complejas sin necesidad de rehacer el proyecto desde cero."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
+    <!-- Ambient Lighting Backdrop -->
+    <div class="ambient-glow" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="glass-nav">
-        <div class="logo" style="line-height: 1.1;">
-            Intersite
-            <span style="display: block; font-size: 0.4em; font-weight: 400; letter-spacing: 0.5px;">Sites Webs
-                Developer Studios</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto" class="btn-primary">Cotizar</a></li>
-        </ul>
-        <div class="mobile-menu-toggle">☰</div>
-    </nav>
+    <header class="glass-nav" id="main-nav">
+        <div class="nav-container">
+            <a href="#inicio" class="logo" aria-label="Intersite Inicio">
+                <span class="logo-main">Intersite</span>
+                <span class="logo-tag">Developer Studios</span>
+            </a>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="fade-in-up">Creamos Sitios Web que <span class="text-gradient">Impresionan</span> y <span
-                    class="text-gradient">Convierten</span></h1>
-            <p class="fade-in-up delay-1">Minimalistas, Futuristas y Efectivos. Diseño de clase mundial para tu negocio.
-            </p>
-            <div class="cta-container fade-in-up delay-2">
-                <a href="#contacto" class="btn-hero pulse">Solicita una Cotización Gratuita</a>
-            </div>
-            <div class="hero-social-proof fade-in-up delay-3">
-                <p>Nuestros clientes dicen: "Wow, ellos sí saben hacer sitios web"</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portafolio" class="portfolio">
-        <div class="section-header">
-            <h2>Ejemplos de Nuestro Trabajo</h2>
-            <p>Sitios reales que generan resultados tangibles.</p>
-        </div>
-        <div class="portfolio-grid">
-            <!-- Project 1: Gestor de Autos -->
-            <div class="project-card reveal">
-                <div class="project-image">
-                    <img src="assets/gestor-preview.png" alt="Gestor de Autos Website" loading="lazy">
-                    <div class="project-overlay">
-                        <div class="project-details">
-                            <h3>Gestor de Autos</h3>
-                            <p>Plataforma integral de trámites vehiculares.</p>
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JS</span>
-                            <a href="https://gestordeautos.com.mx/" target="_blank" class="btn-secondary">Ver Proyecto
-                                en Vivo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 2: MacWave -->
-            <div class="project-card reveal delay-1">
-                <div class="project-image">
-                    <img src="assets/macwave-preview.png" alt="MacWave Website" loading="lazy">
-                    <div class="project-overlay">
-                        <div class="project-details">
-                            <h3>MacWave</h3>
-                            <p>E-commerce especializado en productos Apple.</p>
-                            <span class="tech-tag">E-commerce</span>
-                            <span class="tech-tag">SEO</span>
-                            <a href="https://macwave.com.mx/" target="_blank" class="btn-secondary">Ver Proyecto en
-                                Vivo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="services">
-        <div class="section-header">
-            <h2>Servicios del Futuro</h2>
-            <p>Todo lo que tu empresa necesita para dominar el mundo digital.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="icon-3d">✨</div>
-                <h3>Diseño Minimalista</h3>
-                <p>Estética limpia y futurista que comunica profesionalismo instantáneo.</p>
-            </div>
-            <div class="service-card reveal delay-1">
-                <div class="icon-3d">🚀</div>
-                <h3>Desarrollo Web</h3>
-                <p>Sitios veloces, seguros y optimizados para todos los dispositivos.</p>
-            </div>
-            <div class="service-card reveal delay-2">
-                <div class="icon-3d">💎</div>
-                <h3>E-commerce</h3>
-                <p>Tiendas en línea diseñadas para maximizar tus ventas.</p>
-            </div>
-            <div class="service-card reveal delay-3">
-                <div class="icon-3d">🔍</div>
-                <h3>SEO Avanzado</h3>
-                <p>Posicionamiento estratégico para que tus clientes te encuentren primero.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="contact-container glass-panel reveal">
-            <div class="contact-info">
-                <h2>Empecemos tu Proyecto</h2>
-                <p>¿Listo para el cambio? Te respondemos en menos de 24 horas.</p>
-                <div class="ai-chat-simulation">
-                    <div class="chat-bubble user">Hola, necesito un sitio web.</div>
-                    <div class="chat-bubble ai">¡Excelente! Estás en el lugar correcto. ¿Qué sector es tu empresa?</div>
-                </div>
-            </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" required placeholder="Tu nombre">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required placeholder="tu@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="sector">Sector</label>
-                    <select id="sector">
-                        <option value="privado">Sector Privado</option>
-                        <option value="comercio">Comercio / Retail</option>
-                        <option value="tecnologia">Tecnología</option>
-                        <option value="salud">Salud</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-                </div>
-                <button type="submit" class="btn-glow">Enviar Solicitud</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <div class="logo footer-logo" style="line-height: 1.1;">
-                    Intersite
-                    <span style="display: block; font-size: 0.4em; font-weight: 400; letter-spacing: 0.5px;">Sites Webs
-                        Developer Studios</span>
-                </div>
-                <p class="footer-tagline">Diseñando el futuro digital, hoy.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Enlaces Rápidos</h4>
-                <ul class="footer-links">
+            <nav>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#portafolio">Portafolio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#configurador">Cotizador en Vivo</a></li>
+                    <li><a href="#comparativa">Comparativa</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#faq">Preguntas</a></li>
+                    <li><a href="#contacto" class="btn-nav-cta">Cotizar Ahora</a></li>
                 </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Contacto</h4>
-                <ul class="footer-contact">
-                    <li>hello@aurawebstudios.com</li>
-                    <li>55 3575 7364</li>
-                    <li>Ciudad de México, México</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Síguenos</h4>
-                <div class="social-icons">
-                    <a href="#" class="social-icon">FB</a>
-                    <a href="#" class="social-icon">IG</a>
-                    <a href="#" class="social-icon">LI</a>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Impacto WOW en los primeros 3 segundos) -->
+        <section id="inicio" class="hero">
+            <div class="container hero-content">
+                <div class="status-pill reveal">
+                    <span class="pulse-dot" aria-hidden="true"></span>
+                    <span>Disponibilidad Abierta para Nuevos Proyectos</span>
+                </div>
+
+                <h1 class="hero-title reveal">
+                    Sitios Web que <span class="text-gradient">Impactan</span> en 3 Segundos y <span
+                        class="text-gradient-cyan">Convierten Visitas</span> en Clientes
+                </h1>
+
+                <p class="hero-subtitle reveal">
+                    Desde sitios web básicos ultra-rápidos hasta plataformas complejas a la medida.
+                    Diseño de clase mundial, código sin deuda técnica y rendimiento garantizado en Google.
+                </p>
+
+                <div class="hero-actions reveal">
+                    <a href="#configurador" class="btn-primary btn-magnetic">
+                        <span>Configurar y Cotizar Proyecto</span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="#portafolio" class="btn-secondary btn-magnetic">
+                        <span>Ver Casos Reales</span>
+                    </a>
+                </div>
+
+                <!-- Floating Trust Metrics -->
+                <div class="hero-metrics-grid reveal">
+                    <div class="metric-card">
+                        <div class="metric-value">100/100</div>
+                        <div class="metric-label">Core Web Vitals Ready. Velocidad récord que posiciona en Google.</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">5 a 7 Días</div>
+                        <div class="metric-label">Tiempo de lanzamiento para proyectos y landings básicas express.</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">100% Escalable</div>
+                        <div class="metric-label">Código puro y modular capaz de transmutar a sistemas de alta escala.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Intersite. Todos los derechos reservados.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicios" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Soluciones Digitales</span>
+                    <h2 class="section-title">El Modelo Exacto para tu Etapa de Negocio</h2>
+                    <p class="section-description">
+                        No necesitas pagar de más por lo que no necesitas hoy, ni quedar atrapado en una plantilla lenta
+                        que no pueda crecer mañana.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Servicio 1: Básico Express -->
+                    <article class="service-card reveal">
+                        <div class="service-icon-box" aria-hidden="true">⚡</div>
+                        <h3>Sitio Web Básico / Express</h3>
+                        <p>Diseñado para validar ofertas, campañas publicitarias de Google/Meta o lanzar tu presencia
+                            profesional en tiempo récord.</p>
+                        <ul class="service-features-list">
+                            <li>1 Página (One-Page) de Alto Rendimiento</li>
+                            <li>Formulario directo a WhatsApp y Correo</li>
+                            <li>Velocidad de carga en menos de 1 segundo</li>
+                            <li>Listo en 5 a 7 días hábiles</li>
+                        </ul>
+                        <a href="#configurador" class="btn-view-project">Cotizar Básico →</a>
+                    </article>
+
+                    <!-- Servicio 2: Corporativo PyME -->
+                    <article class="service-card reveal">
+                        <div class="service-icon-box" aria-hidden="true">🏢</div>
+                        <h3>Sitio Corporativo de Autoridad</h3>
+                        <p>Estructura multi-página orientada a transmitir solidez corporativa, captar clientes B2B y
+                            posicionar palabras clave clave en Google.</p>
+                        <ul class="service-features-list">
+                            <li>Hasta 7 secciones o páginas dedicadas</li>
+                            <li>SEO On-Page & Schema JSON-LD Pro</li>
+                            <li>Microinteracciones y dirección de arte premium</li>
+                            <li>Integración con Analytics & Search Console</li>
+                        </ul>
+                        <a href="#configurador" class="btn-view-project">Cotizar Corporativo →</a>
+                    </article>
+
+                    <!-- Servicio 3: E-Commerce Pro -->
+                    <article class="service-card reveal">
+                        <div class="service-icon-box" aria-hidden="true">🛒</div>
+                        <h3>E-Commerce de Alta Conversión</h3>
+                        <p>Tienda online ligera, intuitiva y configurada para reducir el abandono de carrito y
+                            multiplicar tu facturación.</p>
+                        <ul class="service-features-list">
+                            <li>Checkout rápido con Stripe, PayPal o WhatsApp</li>
+                            <li>Catálogo optimizado para móviles</li>
+                            <li>SEO técnico en fichas de producto</li>
+                            <li>Panel para gestión fácil de inventario</li>
+                        </ul>
+                        <a href="#configurador" class="btn-view-project">Cotizar Tienda →</a>
+                    </article>
+
+                    <!-- Servicio 4: A la Medida (Bespoke) -->
+                    <article class="service-card reveal">
+                        <div class="service-icon-box" aria-hidden="true">🔮</div>
+                        <h3>Desarrollo Web a la Medida</h3>
+                        <p>Para modelos de negocio únicos: cotizadores interactivos, portales de clientes, dashboards y
+                            plataformas personalizadas.</p>
+                        <ul class="service-features-list">
+                            <li>Arquitectura de software personalizada</li>
+                            <li>Integración de APIs y bases de datos</li>
+                            <li>Arnés de seguridad y despliegues continuos</li>
+                            <li>Soporte técnico y escalabilidad total</li>
+                        </ul>
+                        <a href="#configurador" class="btn-view-project">Cotizar a la Medida →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Configurator Section -->
+        <section id="configurador" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Transparencia Total</span>
+                    <h2 class="section-title">Configurador y Calculadora de Proyecto en Vivo</h2>
+                    <p class="section-description">
+                        Selecciona el alcance de tu web, activa los módulos que requieres y obtén un estimado
+                        transparente al instante.
+                    </p>
+                </div>
+
+                <div class="configurator-wrapper reveal" id="project-configurator">
+                    <div class="configurator-top-bar">
+                        <h3>Personaliza tu Propuesta</h3>
+                        <div class="currency-selector" aria-label="Selector de Moneda">
+                            <button type="button" class="currency-btn active-currency" data-currency="MXN">MXN
+                                ($)</button>
+                            <button type="button" class="currency-btn" data-currency="USD">USD ($)</button>
+                        </div>
+                    </div>
+
+                    <div class="configurator-grid">
+                        <!-- Lado Izquierdo: Selección -->
+                        <div class="configurator-controls">
+                            <!-- Paso 1: Tipo de Proyecto -->
+                            <span class="step-label">1. Selecciona el Tipo de Sitio</span>
+                            <div class="plans-selection-grid" role="radiogroup">
+                                <!-- Básico -->
+                                <div class="plan-option-card" data-plan-id="basic" role="radio" tabindex="0">
+                                    <div class="plan-header">
+                                        <div class="plan-title">Básico Express</div>
+                                        <div class="plan-check" aria-hidden="true">✓</div>
+                                    </div>
+                                    <p class="plan-desc">One-Page ultra rápida ideal para captación directa.</p>
+                                </div>
+
+                                <!-- Corporativo -->
+                                <div class="plan-option-card active-plan" data-plan-id="corporate" role="radio"
+                                    tabindex="0">
+                                    <div class="plan-header">
+                                        <div class="plan-title">Corporativo PyME</div>
+                                        <div class="plan-check" aria-hidden="true">✓</div>
+                                    </div>
+                                    <p class="plan-desc">Multi-sección de autoridad y presencia de marca sólida.</p>
+                                </div>
+
+                                <!-- E-commerce -->
+                                <div class="plan-option-card" data-plan-id="ecommerce" role="radio" tabindex="0">
+                                    <div class="plan-header">
+                                        <div class="plan-title">E-Commerce Pro</div>
+                                        <div class="plan-check" aria-hidden="true">✓</div>
+                                    </div>
+                                    <p class="plan-desc">Tienda en línea orientada a ventas y conversión ágil.</p>
+                                </div>
+
+                                <!-- A la Medida -->
+                                <div class="plan-option-card" data-plan-id="bespoke" role="radio" tabindex="0">
+                                    <div class="plan-header">
+                                        <div class="plan-title">A la Medida</div>
+                                        <div class="plan-check" aria-hidden="true">✓</div>
+                                    </div>
+                                    <p class="plan-desc">Sistemas, portales y aplicaciones de alta complejidad.</p>
+                                </div>
+                            </div>
+
+                            <!-- Paso 2: Complementos Opcionales -->
+                            <span class="step-label">2. Módulos & Complementos Opcionales</span>
+                            <div class="addons-container">
+                                <label class="addon-row">
+                                    <div class="addon-label-group">
+                                        <input type="checkbox" data-addon-id="seo_pro" checked>
+                                        <span class="addon-name">SEO Técnico Avanzado + Schema Rich Snippets</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-row">
+                                    <div class="addon-label-group">
+                                        <input type="checkbox" data-addon-id="multilang">
+                                        <span class="addon-name">Arquitectura Multi-idioma (Español / Inglés)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-row">
+                                    <div class="addon-label-group">
+                                        <input type="checkbox" data-addon-id="cms_admin">
+                                        <span class="addon-name">Panel Autoadministrable (CMS Fácil sin código)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-row">
+                                    <div class="addon-label-group">
+                                        <input type="checkbox" data-addon-id="checkout">
+                                        <span class="addon-name">Pasarela de Cobros Automatizada (Stripe/PayPal)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-row">
+                                    <div class="addon-label-group">
+                                        <input type="checkbox" data-addon-id="animations">
+                                        <span class="addon-name">Microinteracciones WOW & Efectos 3D Fluidos</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Lado Derecho: Resumen en Vivo -->
+                        <aside class="quote-summary-panel" aria-label="Resumen de Presupuesto Estimado">
+                            <div class="summary-header">
+                                <span class="summary-plan-badge">Plan Seleccionado</span>
+                                <div class="summary-plan-name" id="calc-plan-name">Sitio Corporativo / PyME</div>
+                                <p class="summary-plan-desc" id="calc-plan-tagline">Presencia de autoridad para empresas
+                                    en crecimiento.</p>
+                            </div>
+
+                            <div class="summary-price-box">
+                                <div class="price-display" id="calc-price-display">
+                                    <span class="calc-symbol">$</span>19,500 <span class="calc-suffix">MXN</span>
+                                </div>
+                                <div class="delivery-estimate">
+                                    <span aria-hidden="true">⏱️</span>
+                                    <span>Entrega estimada: <strong id="calc-delivery-display">10 a 14 días
+                                            hábiles</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="summary-includes-box">
+                                <div class="summary-includes-title">Qué incluye este paquete:</div>
+                                <ul class="includes-list" id="calc-included-list">
+                                    <!-- Dinámico vía JS -->
+                                </ul>
+                            </div>
+
+                            <div class="summary-actions">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-quote"
+                                    id="calc-whatsapp-btn">
+                                    <span>Apartar por WhatsApp con este Presupuesto</span>
+                                </a>
+                                <button type="button" class="btn-autofill-form" id="calc-fill-form-btn">
+                                    O enviar detalles al formulario de contacto ↓
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparative Matrix Section -->
+        <section id="comparativa" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Claridad y Certeza</span>
+                    <h2 class="section-title">Sitio Básico vs. Sitio a la Medida</h2>
+                    <p class="section-description">
+                        Comprende exactamente qué solución se adapta a tus metas comerciales actuales.
+                    </p>
+                </div>
+
+                <div class="comparison-table-wrapper reveal">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Sitio Básico Express</th>
+                                <th class="highlight-col">Sitio Corporativo</th>
+                                <th>Sitio a la Medida (Bespoke)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Objetivo Principal</strong></td>
+                                <td>Lanzamiento ágil y captación de prospectos</td>
+                                <td class="highlight-col">Autoridad de marca y ventas recurrentes</td>
+                                <td>Automatización de operaciones y escalabilidad</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estructura</strong></td>
+                                <td>1 Página (Secciones en scroll)</td>
+                                <td class="highlight-col">Multi-página (5 a 7 páginas)</td>
+                                <td>Ilimitada / Rutas dinámicas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tiempo de Entrega</strong></td>
+                                <td>5 a 7 días hábiles</td>
+                                <td class="highlight-col">10 a 14 días hábiles</td>
+                                <td>30 a 45 días hábiles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Search Console</strong></td>
+                                <td>Indexación y Schema esencial</td>
+                                <td class="highlight-col">SEO Técnico Avanzado + JSON-LD Pro</td>
+                                <td>Estrategia SEO de nivel empresarial</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Código y Arquitectura</strong></td>
+                                <td>HTML5/CSS/JS limpio y ultraligero</td>
+                                <td class="highlight-col">Modular con Sistema de Tokens</td>
+                                <td>Stack moderno (APIs, Base de Datos, CI/CD)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portafolio" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Casos de Éxito</span>
+                    <h2 class="section-title">Proyectos Reales que Generan Resultados</h2>
+                    <p class="section-description">
+                        Explora sitios en producción diseñados con nuestra arquitectura de alto rendimiento.
+                    </p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <!-- Project 1: Gestor de Autos -->
+                    <article class="project-card reveal">
+                        <div class="project-image-wrap">
+                            <img src="assets/gestor-preview.png" alt="Plataforma Gestor de Autos Website Preview"
+                                width="600" height="375" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-tags">
+                                    <span class="tech-tag">Trámites Vehiculares</span>
+                                    <span class="tech-tag">Alta Velocidad</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Gestor de Autos</h3>
+                            <p>Plataforma integral de gestión de trámites vehiculares diseñada para generar confianza
+                                inmediata y facilitar la captación de clientes.</p>
+                            <a href="https://gestordeautos.com.mx/" target="_blank" rel="noopener noreferrer"
+                                class="btn-view-project">
+                                Visitar Sitio en Vivo ↗
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: MacWave -->
+                    <article class="project-card reveal">
+                        <div class="project-image-wrap">
+                            <img src="assets/macwave-preview.png" alt="E-commerce MacWave Website Preview" width="600"
+                                height="375" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-tags">
+                                    <span class="tech-tag">E-Commerce</span>
+                                    <span class="tech-tag">Apple Specialist</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>MacWave</h3>
+                            <p>Tienda virtual especializada en ecosistema de productos Apple, con navegación fluida,
+                                diseño minimalista y alta tasa de conversión.</p>
+                            <a href="https://macwave.com.mx/" target="_blank" rel="noopener noreferrer"
+                                class="btn-view-project">
+                                Visitar Sitio en Vivo ↗
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Resolviendo Dudas</span>
+                    <h2 class="section-title">Preguntas Frecuentes</h2>
+                    <p class="section-description">
+                        Todo lo que necesitas saber antes de iniciar el desarrollo de tu sitio web.
+                    </p>
+                </div>
+
+                <div class="faq-container reveal">
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Cuál es la diferencia entre un sitio básico y uno a la medida?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Un sitio básico o landing express es una solución directa y veloz estructurada en una
+                                sola página para captar clientes o validar una propuesta. Un sitio a la medida cuenta
+                                con desarrollo especializado, diseño 100% único, múltiples páginas e integraciones
+                                técnicas como paneles autoadministrables, pasarelas de pago o conexiones a bases de
+                                datos.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Por qué no utilizan constructores lentos como WordPress Elementor o Wix?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Los constructores visuales tradicionales inyectan megabytes de código basura, ralentizan
+                                los tiempos de carga en móviles y perjudican tu posicionamiento en Google. Nosotros
+                                programamos código modular y limpio para garantizar que tu sitio cargue en menos de 1.2
+                                segundos y obtenga 100/100 en Core Web Vitals.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Cómo optimizan el sitio para Google Search Console?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Entregamos cada proyecto con metadatos canónicos, robots.txt optimizado, mapa de sitio
+                                sitemap.xml y datos estructurados Schema.org (JSON-LD) para que Googlebot comprenda tu
+                                negocio y muestre fragmentos enriquecidos (Rich Snippets) en los resultados de búsqueda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Puedo iniciar con un sitio básico y transformarlo en uno más complejo luego?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutamente. Toda nuestra arquitectura está construida bajo el principio de
+                                transmutación modular: tu sitio puede comenzar como una landing básica y evolucionar a
+                                e-commerce o plataforma empresarial sin tener que empezar desde cero ni tirar a la
+                                basura tu inversión inicial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="section">
+            <div class="container">
+                <div class="contact-wrapper reveal">
+                    <div class="contact-info">
+                        <span class="section-tag">Hablemos de tu Proyecto</span>
+                        <h2>Llevemos tu Negocio al Siguiente Nivel</h2>
+                        <p>Platícanos sobre tu visión. Recibirás una propuesta técnica y comercial en menos de 24 horas.
+                        </p>
+
+                        <div class="ai-chat-simulation" aria-hidden="true">
+                            <div class="chat-bubble user">Hola, quiero cotizar un sitio web para mi empresa.</div>
+                            <div class="chat-bubble ai">¡Excelente! ¿Buscas un sitio básico express o una plataforma a
+                                la medida? Tenemos disponibilidad inmediata.</div>
+                        </div>
+
+                        <ul class="contact-direct-links">
+                            <li><span aria-hidden="true">✉️</span> hello@aurawebstudios.com</li>
+                            <li><span aria-hidden="true">📞</span> 55 3575 7364</li>
+                            <li><span aria-hidden="true">📍</span> Ciudad de México, México</li>
+                        </ul>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Tu Nombre o Empresa</label>
+                            <input type="text" id="name" required placeholder="Ej. Joel Durán" autocomplete="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" required placeholder="tu@empresa.com" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sector">Sector o Industria</label>
+                            <select id="sector">
+                                <option value="corporativo">Corporativo / Servicios Profesionales</option>
+                                <option value="ecommerce">Comercio / Tienda Online</option>
+                                <option value="tecnologia">Tecnología / Startup</option>
+                                <option value="salud">Salud / Bienestar</option>
+                                <option value="automotriz">Automotriz / Trámites</option>
+                                <option value="otro">Otro Sector</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Detalles del Proyecto</label>
+                            <textarea id="message" rows="4"
+                                placeholder="Cuéntanos brevemente qué necesitas (puedes usar el botón del cotizador para autocompletar este campo)..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-magnetic">
+                            <span>Enviar Solicitud de Proyecto</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-main">Intersite</span>
+                        <span class="logo-tag">Developer Studios</span>
+                    </div>
+                    <p>Estudio de desarrollo e ingeniería web de alta gama. Sitios creados para impactar en 3 segundos y
+                        convertir de por vida.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#configurador">Cotizador en Vivo</a></li>
+                        <li><a href="#comparativa">Comparativa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Proyectos</h4>
+                    <ul>
+                        <li><a href="#portafolio">Portafolio</a></li>
+                        <li><a href="https://gestordeautos.com.mx/" target="_blank" rel="noopener">Gestor de Autos</a>
+                        </li>
+                        <li><a href="https://macwave.com.mx/" target="_blank" rel="noopener">MacWave Store</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:hello@aurawebstudios.com">hello@aurawebstudios.com</a></li>
+                        <li><a href="tel:+525535757364">55 3575 7364</a></li>
+                        <li><a href="https://wa.me/525535757364" target="_blank" rel="noopener">WhatsApp Directo</a>
+                        </li>
+                        <li><a href="#contacto">Ciudad de México</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Intersite Studios. Todos los derechos reservados.</p>
+                <p>Optimizada para Google Search Console & Core Web Vitals.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Background Canvas and Scripts -->
+    <canvas id="fluid-canvas"></canvas>
+    <script src="js/fluid-background.js"></script>
+    <script src="js/configurator.js"></script>
     <script src="js/script.js"></script>
 </body>
 
