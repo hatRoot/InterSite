@@ -319,11 +319,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const speedConsole = document.getElementById('speed-console');
+
     if (consoleTabs.length && scoreNum) {
-        // Disparar animación de entrada desde cero al cargar
-        setTimeout(() => {
-            updateConsoleMetrics('native', 1600);
-        }, 350);
+        let hasAnimatedOnScroll = false;
+
+        // Activar la animación cuando el scroll llega a la consola
+        if (speedConsole && 'IntersectionObserver' in window) {
+            const consoleObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimatedOnScroll) {
+                        hasAnimatedOnScroll = true;
+                        setTimeout(() => {
+                            updateConsoleMetrics('native', 1600);
+                        }, 200);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            consoleObserver.observe(speedConsole);
+        } else {
+            // Fallback si el navegador no soporta IntersectionObserver
+            setTimeout(() => {
+                updateConsoleMetrics('native', 1600);
+            }, 600);
+        }
 
         // Control de pestañas
         consoleTabs.forEach(tab => {
