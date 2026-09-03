@@ -1044,23 +1044,83 @@ h1, h2, h3, h4 {
 }
 
 .btn-whatsapp-quote {
-    background: #25d366;
-    color: #000000;
+    background: linear-gradient(135deg, rgba(0, 223, 143, 0.22) 0%, rgba(5, 150, 105, 0.4) 50%, rgba(4, 120, 87, 0.6) 100%);
+    border: 1px solid rgba(0, 223, 143, 0.7);
+    color: #ffffff !important;
     font-weight: 800;
     font-size: var(--text-sm);
-    padding: var(--space-md);
+    letter-spacing: 0.03em;
+    padding: 1rem 1.75rem;
     border-radius: var(--radius-full);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-xs);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+    gap: var(--space-sm);
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 223, 143, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: all var(--transition-fast);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    width: 100%;
+}
+
+.btn-whatsapp-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.75s ease;
+}
+
+.btn-whatsapp-quote:hover::before {
+    left: 140%;
 }
 
 .btn-whatsapp-quote:hover {
+    background: linear-gradient(135deg, rgba(0, 223, 143, 0.45) 0%, rgba(16, 185, 129, 0.65) 100%);
+    border-color: #00df8f;
     transform: translateY(-2px);
-    box-shadow: 0 0 35px rgba(37, 211, 102, 0.7);
+    box-shadow: 0 0 45px rgba(0, 223, 143, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    color: #ffffff !important;
+}
+
+.btn-whatsapp-quote .wa-icon {
+    width: 20px;
+    height: 20px;
+    fill: #00df8f;
+    filter: drop-shadow(0 0 8px rgba(0, 223, 143, 0.7));
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.btn-whatsapp-quote:hover .wa-icon {
+    transform: scale(1.15) rotate(-5deg);
+    fill: #ffffff;
+}
+
+.btn-whatsapp-quote .btn-wa-text {
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.btn-whatsapp-quote .wa-arrow {
+    color: #00df8f;
+    font-weight: 900;
+    font-size: 1.1rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn-whatsapp-quote:hover .wa-arrow {
+    transform: translateX(4px);
+    color: #ffffff;
 }
 
 .btn-autofill-form {
